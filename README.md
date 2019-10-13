@@ -131,7 +131,7 @@ Matches can be made very terse with these rules.
 
 ```bash
 $ ls | ':\.md$'
-$ ls | 's:.md$:txt$'
+$ ls | 's:\.md$:txt$'
 $ ls | 'y:a-z:A-Z'
 ```
 
