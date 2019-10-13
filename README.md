@@ -69,7 +69,7 @@ Inversion is not compatible with replacement operations. Attempting to do so wil
 
 ### Web Install
 
-Simply run the following command to install prpl:
+Simply run the following command to install `prpl`:
 
 ```bash
 $ curl https://raw.githubusercontent.com/seanmorris/prpl/master/web-install.sh | sudo bash
@@ -87,6 +87,6 @@ $ sudo bash install.sh
 
 ## License 
 
-prpl &copy; Sean Morris 2019
+`prpl` &copy; Sean Morris 2019
 
 All code in this package is relased under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) licence.
