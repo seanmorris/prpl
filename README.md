@@ -130,7 +130,7 @@ You don't need to specify a closing delimiter for any operaion, unless you need 
 Matches can be made very terse with these rules.
 
 ```bash
-$ ls | ':.md$'
+$ ls | ':\.md$'
 $ ls | 's:.md$:txt$'
 $ ls | 'y:a-z:A-Z'
 ```
