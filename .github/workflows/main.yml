@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/test@v1
+    - uses: actions/checkout@v1
     - name: Test prpl
       run: cd test && bash test
