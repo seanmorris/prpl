@@ -67,6 +67,18 @@ $ prpl '/prpl/g' README.md
 
 Inversion is not compatible with replacement operations. Attempting to do so will simply cause the input to pass through unmodified, with warnings generated to `STDERR`.
 
+#### Running Perl Code
+
+Replacements can use the /e modifier. This allows us to evaluate the replacement as per code before returning it.
+
+The command below will take each file in a directory, and replace it with a file with a capitalize extension.
+
+This command will run the perl `uc` function on the second matched group, and return the uppercase version of it. It also uses the /x modifier, which causes the regex enegine to ignore whitespace and make our expressions a little more readable:
+
+```bash
+$ ls -p | prpl -v 'm:\W$' | prpl 's/ (.+?) \. (.+) / "mv $1.$2 $1." . uc($2) /xe' | bash
+```
+
 #### Transliteration
 
 Transliteration may be applied with the `y` prefix.
