@@ -10,7 +10,7 @@ my $expression;
 my $modifiers = '';
 my %flags = ('i', 0); 
 
-while($ARGV[0] =~ /^-(.)/)
+while($ARGV[0] && $ARGV[0] =~ /^-(.)/)
 {
 	shift @ARGV;
 	$flags{ $1 } = 1;
