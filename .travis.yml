@@ -20,7 +20,5 @@ before_install:
   - build-perl
   - perl -V
 install:
-  - export RELEASE_TESTING=1 AUTOMATED_TESTING=1 AUTHOR_TESTING=1 HARNESS_OPTIONS=c HARNESS_TIMER=1
-  - cpanm --quiet --notest --installdeps .
 script:
   - cd test && test.sh
