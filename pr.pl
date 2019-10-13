@@ -8,7 +8,7 @@ my $operation;
 my $delimiter;
 my $expression;
 my $modifiers = '';
-my %flags = ('i', 0); 
+my %flags = ('v', 0); 
 
 while($ARGV[0] && $ARGV[0] =~ /^-(.)/)
 {
@@ -29,13 +29,15 @@ if(!@files)
 	@files = ('/dev/stdin');
 }
 
-$input =~ /([sm]?)((.).+)/;
+$input =~ /([smy]?)((.).+)/;
 
 $operation  = $1 || 'm';
-$delimiter  = $3;
-$expression = $2;
+$delimiter  = $3 || '/';
+$expression = $2 || '';
 
-($_, $pattern, $replace, $modifiers) = split($delimiter, $expression);
+($_, $pattern, $replace, $modifiers) = split(/(?<!\\) $delimiter/x, $expression);
+
+$pattern = $pattern || '$^';
 
 if($operation eq 'm')
 {
@@ -59,23 +61,23 @@ for(@files)
 
 		if($operation eq 'm')
 		{
-			if(eval qq(m/$pattern/$modifiers))
+			if(eval qq(m#$pattern#$modifiers))
 			{
-				if(!$flags{ 'i' })
+				if(!$flags{ 'v' })
 				{
 					print; print "\n";
 				}
 			}
 			else
 			{
-				if($flags{ 'i' })
+				if($flags{ 'v' })
 				{
 					print; print "\n";					
 				}
 			}
 		}
 
-		if($operation eq 's')
+		if($operation eq 's' || $operation eq 'y')
 		{
 			if($flags{ 'i' })
 			{
@@ -84,7 +86,7 @@ for(@files)
 				next;
 			}
 
-			eval qq(s/$pattern/$replace/$modifiers);
+			eval qq($operation#$pattern#$replace#$modifiers);
 
 			print; print "\n";
 		}

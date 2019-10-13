@@ -1,4 +1,4 @@
-# pr.pl v0.0.1
+# pr.pl v0.0.2
 
 `prpl` is a simple PCRE stream processing for the CLI. It is intended as a **barebone, primitive** substitute for `grep`, `sed` and `awk`.
 
