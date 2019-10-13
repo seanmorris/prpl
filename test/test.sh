@@ -50,7 +50,7 @@ done;
 
 echo "$PASSED test passed. $FAILED tests failed."
 
-if [[ FAILED != 0 ]]; then
+if [ $FAILED != 0 ]; then
 
 	exit 1;
 
