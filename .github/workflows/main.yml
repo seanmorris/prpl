@@ -10,4 +10,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Test prpl
-      run: cd test && bash test
+      run: cd test && bash test.sh
