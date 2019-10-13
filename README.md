@@ -1,4 +1,4 @@
-# pr.pl v0.0.2
+# pr.pl v0.0.3
 
 `prpl` exposes simple PCRE stream processing to the CLI. It is intended as a **barebone, primitive** substitute for `grep`, `sed` and `awk`.
 
@@ -67,6 +67,70 @@ $ prpl '/prpl/g' README.md
 
 Inversion is not compatible with replacement operations. Attempting to do so will simply cause the input to pass through unmodified, with warnings generated to `STDERR`.
 
+#### Transliteration
+
+Transliteration may be applied with the `y` prefix.
+
+This will capitalize all lowercase characters passed in:
+
+Here's a simple ROT13 implementation:
+
+```bash
+$ prpl 'y/A-Za-z/N-ZA-Mn-za-m/' README.md
+```
+
+This will run the operation twice, returning the original text:
+
+```bash
+$ prpl 'y/A-Za-z/N-ZA-Mn-za-m/' README.md | prpl 'y/A-Za-z/N-ZA-Mn-za-m/'
+```
+
+Inversion is not supported for transliteration and will have the same result as an attempt to invert a substitution.
+
+#### Alternate Delimiters
+
+You can substitute characters like : or % to improve readability.
+
+These are all the same command:
+
+```bash
+$ prpl /match/ README.md
+$ prpl :match: README.md
+$ prpl %match% README.md
+```
+
+#### Dropping the quotes
+
+You don't explicitly NEED single quotes around your expression, unless you're using spaces or escapes. Single quotes will ensure your backslashes are preserved to the regex engine.
+
+```bash
+$ prpl /\w/ README.md    # prpl receives /w/
+$ prpl '/\w/' README.md  # prpl correctly receives /\w/
+```
+```bash
+$ prpl /\d{4}/   README.md  # prpl receives /d{4}/
+$ prpl '/\d{4}/' README.md  # prpl correctly receives /\d{4}/
+```
+
+```bash
+$ ls |  /\.md/  # prpl receives /.md/
+$ ls | '/\.md/' # prpl correctly receives /\.md/
+```
+
+#### Shorthand
+
+`prpl` will run a match if the regex supplied begins with a delimiter or an `m`.
+
+You don't need to specify a closing delimiter for any operaion, unless you need modifiers.
+
+Matches can be made very terse with these rules.
+
+```bash
+$ ls | ':.md$'
+$ ls | 's:.md$:txt$'
+$ ls | 'y:a-z:A-Z'
+```
+
 ## Installation
 
 ### Web Install
@@ -86,6 +150,14 @@ $ git clone https://github.com/seanmorris/prpl.git
 $ cd prpl
 $ sudo bash install.sh
 ```
+
+### Testing 
+
+`prpl` can compare its behavior with `grep` and `sed`. Just navigate to the test directory of the project and run `bash test.sh`. You can add grep tests to `grepTests.txt`. They'll be tested for regex matech against a list of 77,022 American words. Please do not include delimiters here, as `grep` doesn't use them. They'll be added for `prpl.` `sed` tests should be supplied in similar form in `setTests.txt`, **with** their delimiters and leading `s`'s.
+
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fseanmorris%2Fprpl%2Fbadge%3Fref%3Dmaster&style=flat-square)](https://actions-badge.atrox.dev/seanmorris/prpl/goto?ref=master)
+
+Tests are automatically executed by github on push. Their status is reported by the badge directly above, as well as in the header of this README.
 
 ## License 
 
