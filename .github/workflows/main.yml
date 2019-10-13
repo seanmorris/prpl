@@ -8,11 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Test prpl
-      run: bash install.sh
+      - - uses: actions/checkout@v1
+        - name: Test prpl
+          run: bash install.sh
 
-    steps:
-    - uses: actions/checkout@v1
-    - name: Test prpl
-      run: cd test && bash test.sh
+      - - uses: actions/checkout@v1
+        - name: Test prpl
+          run: cd test && bash test.sh
