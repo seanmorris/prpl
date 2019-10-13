@@ -19,4 +19,8 @@ before_install:
   - source ~/travis-perl-helpers/init
   - build-perl
   - perl -V
-script: cd test && test.sh
+install:
+  - export RELEASE_TESTING=1 AUTOMATED_TESTING=1 AUTHOR_TESTING=1 HARNESS_OPTIONS=c HARNESS_TIMER=1
+  - cpanm --quiet --notest --installdeps .
+script:
+  - cd test && test.sh
