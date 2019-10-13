@@ -73,6 +73,10 @@ Transliteration may be applied with the `y` prefix.
 
 This will capitalize all lowercase characters passed in:
 
+```bash
+$ prpl 'y/a-z/A-Z/' README.md
+```
+
 Here's a simple ROT13 implementation:
 
 ```bash
