@@ -1,8 +1,13 @@
 language: perl
 perl:
-  - '5.30'
-  - '5.28'
-  - '5.26'
+  - "5.8"
+  - "5.10"
+  - "5.12"
+  - "5.14"
+  - "5.16"
+  - "5.18"
+  - "5.20"
 before_install:
-  - sudo apt-get install -qq unixodbc unixodbc-dev
+  - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
+  - source ~/travis-perl-helpers/init --auto
 script: cd test && test.sh
