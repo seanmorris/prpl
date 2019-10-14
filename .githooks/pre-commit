@@ -1,0 +1,51 @@
+#!/bin/bash
+
+ESC=$(printf "\033")
+
+PERL_FILES=$(
+	git diff-index HEAD \
+	| grep ".pl$" \
+	| grep "^:"   \
+	| perl -pe 's/.*?\s[DAM]\s+//g' \
+)
+
+ERRORS=0
+
+for FILE in $PERL_FILES; do
+	echo "Checking $FILE..."
+	ERROR=$(perl -c $FILE 2>&1 1>/dev/null)
+	if [[ $? != 0 ]]; then
+		echo $error | sed "s,.*,    ${esc}[31m&${esc}[0m,"
+		ERRORS=1
+	else
+		echo "    ${ESC}[32mGood.${ESC}[0m"
+	fi
+done
+
+BASH_FILES=$(
+	git diff-index HEAD \
+	| grep ".sh$" \
+	| grep "^:"   \
+	| perl -pe 's/.*?\s[DAM]\s+//g' \
+)
+
+for FILE in $BASH_FILES; do
+
+	echo "Checking $FILE..."
+	ERROR=$(bash -n $FILE 2>&1 1>/dev/null)
+
+	if [[ $? != 0 ]]; then
+		echo $ERROR | sed "s,.*,    ${ESC}[31m&${ESC}[0m,"
+		ERRORS=1
+	else
+		echo "    ${ESC}[32mGood.${ESC}[0m"
+	fi
+done
+
+if [[ $ERRORS == 1 ]]; then
+	echo "Commit aborted."
+	exit 1
+else
+	echo "Commit allowed..."
+	exit 0
+fi
