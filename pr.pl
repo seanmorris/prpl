@@ -67,8 +67,7 @@ if($flags{ 'h' })
 	print "\n      s for replacement     - s/gr[ae]y/black/";
 	print "\n      m for transliteration - y/A-Za-z/N-ZA-Mn-za-m/";
 	print "\n";
-	print "\n";
-	print "-h Print this help message.\n";
+	print "\n-h Print this help message.\n";
 	print "\n";
 	print "-i Print version & copyright information.\n";
 	print "\n";
@@ -121,19 +120,13 @@ for(@files)
 
 		if($operation eq 'm')
 		{
-			if(eval qq(m#$pattern#$modifiers))
+			if(eval qq(m#$pattern#$modifiers) && !$flags{ 'v' })
 			{
-				if(!$flags{ 'v' })
-				{
-					print; print "\n";
-				}
+				print; print "\n";
 			}
-			else
+			elsif($flags{ 'v' })
 			{
-				if($flags{ 'v' })
-				{
-					print; print "\n";
-				}
+				print; print "\n";
 			}
 		}
 

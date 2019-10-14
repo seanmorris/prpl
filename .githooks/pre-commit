@@ -1,15 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ESC=$(printf "\033")
-
+ERRORS=0
 PERL_FILES=$(
 	git diff-index HEAD \
 	| grep ".pl$" \
 	| grep "^:"   \
 	| perl -pe 's/.*?\s[DAM]\s+//g' \
 )
-
-ERRORS=0
 
 for FILE in $PERL_FILES; do
 	echo "Checking $FILE..."
