@@ -18,7 +18,6 @@ for INPUT in $(cat $(dirname $0)/grepTest.txt); do
 	fi;
 done;
 
-
 for REPLACE_INPUT in $(cat $(dirname $0)/sedTest.txt); do
 	for SEARCH_INPUT in $(cat $(dirname $0)/grepTest.txt); do
 		GREP=$(cat $(dirname $0)/dictionary.txt | grep $SEARCH_INPUT)

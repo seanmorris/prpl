@@ -122,11 +122,11 @@ for(@files)
 		{
 			if(eval qq(m#$pattern#$modifiers) && !$flags{ 'v' })
 			{
-				print; print "\n";
+				print "$_\n";
 			}
 			elsif($flags{ 'v' })
 			{
-				print; print "\n";
+				print "$_\n";
 			}
 		}
 
@@ -135,13 +135,13 @@ for(@files)
 			if($flags{ 'i' })
 			{
 				warn "Cannot invert substitution. Printing original line.\n";
-				print; print "\n";
+				print "$_\n";
 				next;
 			}
 
 			eval qq($operation#$pattern#$replace#$modifiers);
 
-			print; print "\n";
+			print "$_\n";
 		}
 	}
 }
