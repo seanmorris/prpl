@@ -172,6 +172,8 @@ $ sudo bash install.sh
 
 Tests are automatically executed by github on push. Their status is reported by the badge directly above, as well as in the header of this README.
 
+Tests & syntax checks are also automatically executed in a git pre-commit hook. The commit is rejected if any of these fail.
+
 You can view the latest test output [here](https://actions-badge.atrox.dev/seanmorris/prpl/goto?ref=master).
 
 Example output:
