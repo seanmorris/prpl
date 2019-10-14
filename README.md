@@ -168,11 +168,39 @@ $ sudo bash install.sh
 
 ### Testing 
 
-`prpl` can compare its behavior with `grep` and `sed`. Just navigate to the test directory of the project and run `bash test.sh`. You can add grep tests to `grepTests.txt`. They'll be tested for regex matech against a list of 77,022 American words. Please do not include delimiters here, as `grep` doesn't use them. They'll be added for `prpl.` `sed` tests should be supplied in similar form in `setTests.txt`, **with** their delimiters and leading `s`'s.
-
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fseanmorris%2Fprpl%2Fbadge%3Fref%3Dmaster&style=flat-square)](https://actions-badge.atrox.dev/seanmorris/prpl/goto?ref=master)
 
 Tests are automatically executed by github on push. Their status is reported by the badge directly above, as well as in the header of this README.
+
+You can view the latest test output ![here](https://actions-badge.atrox.dev/seanmorris/prpl/goto?ref=master).
+
+Example output:
+
+```txt
+$./test.sh
+ Prpl © Copyright 2019 Sean Morris
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ Visit https://github.com/seanmorris/prpl for help, or to contribute.
+
+Starting tests...
+3367 test passed. 0 tests failed.
+```
+
+`prpl` can compare its behavior with `grep` and `sed`. Just navigate to the test directory of the project and run `bash test.sh`.
+
+You can add grep tests to `grepTests.txt`. They'll be tested for regex matech against a list of 77,022 American words. Please do not include delimiters here, as `grep` doesn't use them. They'll be added for `prpl.` `sed` tests should be supplied in similar form in `setTests.txt`, **with** their delimiters and leading `s`'s.
 
 ## License 
 
