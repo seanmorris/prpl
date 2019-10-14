@@ -1,3 +1,4 @@
+![avatar](https://avatars3.githubusercontent.com/u/640101?s=80&v=4)
 # pr.pl v0.0.3
 
 `prpl` exposes simple PCRE stream processing to the CLI. It is intended as a **barebone, primitive** substitute for `grep`, `sed` and `awk`.
