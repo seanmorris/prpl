@@ -5,7 +5,7 @@
 
 ![seanmorris-prpl](https://img.shields.io/badge/seanmorris-prpl-purple?style=for-the-badge) [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fseanmorris%2Fprpl%2Fbadge%3Fref%3Dmaster&style=for-the-badge)](https://actions-badge.atrox.dev/seanmorris/prpl/goto?ref=master) ![Size badge](https://img.shields.io/github/languages/code-size/seanmorris/prpl?style=for-the-badge)
 
-![](https://seanmorr.is/Static/Dynamic/5da3a9a569a9a.1571006885.4328.jpeg)
+![](https://seanmorr.is/Static/Dynamic/5dad991f5733f.1571658015.3572.jpeg)
 
 ## Installation
 
