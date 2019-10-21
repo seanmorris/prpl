@@ -7,6 +7,26 @@
 
 ![](https://seanmorr.is/Static/Dynamic/5da3a9a569a9a.1571006885.4328.jpeg)
 
+## Installation
+
+### Web Install
+
+Simply run the following command to install `prpl`:
+
+```bash
+$ curl https://raw.githubusercontent.com/seanmorris/prpl/master/web-install.sh | sudo bash
+```
+
+Or check the project out and install it locally:
+
+### Local Install
+
+```bash
+$ git clone https://github.com/seanmorris/prpl.git
+$ cd prpl
+$ sudo bash install.sh
+```
+
 ## Usage
 
 ```prpl [-v] PATTERN [file, file...]```
@@ -148,27 +168,7 @@ Matches can be made very terse with these rules.
 $ prpl ':e' README #Find all lines with lowercase e's.
 ```
 
-## Installation
-
-### Web Install
-
-Simply run the following command to install `prpl`:
-
-```bash
-$ curl https://raw.githubusercontent.com/seanmorris/prpl/master/web-install.sh | sudo bash
-```
-
-Or check the project out and install it locally:
-
-### Local Install
-
-```bash
-$ git clone https://github.com/seanmorris/prpl.git
-$ cd prpl
-$ sudo bash install.sh
-```
-
-### Testing 
+## Testing 
 
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fseanmorris%2Fprpl%2Fbadge%3Fref%3Dmaster&style=flat-square)](https://actions-badge.atrox.dev/seanmorris/prpl/goto?ref=master)
 
